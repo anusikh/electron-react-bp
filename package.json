@@ -2,6 +2,9 @@
   "name": "electron-sample",
   "version": "0.1.0",
   "private": true,
+  "productName": "React Electron",
+  "main": "public/electron.js",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -20,7 +23,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-electron": "export ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "package": "electron-builder build --mac --win --linux -c.extraMetadata.main=build/electron.js --publish never",
+    "publish": "electron-builder build --mac --win --linux --publish always"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +45,47 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^21.1.0",
+    "electron-builder": "^23.6.0"
+  },
+  "build": {
+    "mac": {
+      "publish": {
+        "provider": "github",
+        "owner": "anusikh",
+        "repo": "anusikh",
+        "private": true,
+        "token": ""
+      }
+    },
+    "win": {
+      "publish": {
+        "provider": "github",
+        "owner": "anusikh",
+        "repo": "anusikh",
+        "private": true,
+        "token": ""
+      }
+    },
+    "linux": {
+      "publish": {
+        "provider": "github",
+        "owner": "anusikh",
+        "repo": "anusikh",
+        "private": true,
+        "token": ""
+      }
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "publish": {
+      "provider": "github",
+      "private": true,
+      "owner": "anusikh"
+    }
   }
 }
